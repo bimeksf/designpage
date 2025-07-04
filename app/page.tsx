@@ -10,26 +10,33 @@ const boxVariants = {
     scaleX: 0,
     originX: 0.5,
   },
-  visible: {
+  visible: (custom:number) => ({
     opacity: 1,
     scaleX: 1,
     transition: {
-      duration: 1.2,
+           duration: custom, 
       ease: 'easeInOut' as const,
     },
-  },
+  }),
 };
 
 export default function Home() {
   return (
     <>
       <section className="bg-[#a3bde4] h-screen pt-4">
-        <Navbar />
+<motion.div
+  initial={{ y: -50, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.8, ease: "easeInOut" }} 
+>
+  <Navbar />
+</motion.div>
 
         <div className="w-11/12 mx-auto">
           <motion.div
             initial="hidden"
             animate="visible"
+                  custom={1.3}
             variants={boxVariants}
             className="bg-black rounded-2xl p-8 text-white mb-4 origin-center"
           >
@@ -46,6 +53,7 @@ export default function Home() {
             {[1, 2, 3].map((_, i) => (
               <motion.div
                 key={i}
+                      custom={1.2}
                 initial="hidden"
                 animate="visible"
                 variants={boxVariants}
