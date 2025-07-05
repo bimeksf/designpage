@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { products } from "../../../data/data";
 
-import { notFound } from "next/navigation";
+import { notFound ,useParams} from "next/navigation";
 const circleVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: (i: number) => ({
@@ -38,14 +38,13 @@ const images = [
   { src: "/3d.jpg", alt: "3d" },
 ];
 
-type PageProps  = {
-  params: {
-    slug: string;
-  };
-};
 
-const Page: React.FC<PageProps> = ({ params }) => {
-  const product = products.find((p) => p.id === params.slug);
+
+const Page = () => {
+ const params = useParams(); 
+  const slug = params?.slug;
+
+  const product = products.find((p) => p.id === slug);
 
   if (!product) return notFound();
 
