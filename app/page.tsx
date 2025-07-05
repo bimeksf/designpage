@@ -27,7 +27,7 @@ export default function Home() {
 <motion.div
   initial={{ y: -50, opacity: 0 }}
   animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 0.8, ease: "easeInOut" }} 
+  transition={{ duration: 0.8, ease: "easeInOut" ,delay:0.5}} 
 >
   <Navbar />
 </motion.div>
@@ -36,7 +36,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             animate="visible"
-                  custom={1.3}
+                  custom={1.5}
             variants={boxVariants}
             className="bg-black rounded-2xl p-8 text-white mb-4 origin-center"
           >
