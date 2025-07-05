@@ -38,13 +38,13 @@ const images = [
   { src: "/3d.jpg", alt: "3d" },
 ];
 
-type Props = {
+type PageProps  = {
   params: {
     slug: string;
   };
 };
 
-const Page: React.FC<Props> = ({ params }) => {
+const Page: React.FC<PageProps> = ({ params }) => {
   const product = products.find((p) => p.id === params.slug);
 
   if (!product) return notFound();
