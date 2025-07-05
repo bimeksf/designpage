@@ -44,7 +44,7 @@ type Props = {
   };
 };
 
-const page = ({ params }: Props) => {
+const Page: React.FC<Props> = ({ params }) => {
   const product = products.find((p) => p.id === params.slug);
 
   if (!product) return notFound();
@@ -121,4 +121,4 @@ const page = ({ params }: Props) => {
   );
 };
 
-export default page;
+export default Page;
