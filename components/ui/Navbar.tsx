@@ -1,11 +1,18 @@
 'use client'
-
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { motion } from "framer-motion";
 
 const Navbar = () => {
+
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => setIsOpen(!isOpen)
@@ -47,6 +54,17 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+               <SignedOut>
+              <SignInButton />
+              <SignUpButton>
+                <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
         </ul>
 
         {/* Mobile menu icon */}
@@ -71,6 +89,7 @@ const Navbar = () => {
           </ul>
         )}
       </nav>
+ 
     </header>
         </motion.div>
   )
